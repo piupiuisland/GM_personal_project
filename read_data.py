@@ -44,6 +44,7 @@ data_2018 = all2018_data.iloc[0:151,:]
 print(data_2018)
 data_2018.to_csv('data_player/data_2018.csv',index=False)      # index = false 是表示不保存index的意思
 
+import pandas as pd
 
 def use_pandas_readdata(filename,lines,savename):
     path = 'data_player/'

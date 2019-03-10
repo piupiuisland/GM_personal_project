@@ -1,0 +1,59 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dbo: <http://dbpedia.org/ontology/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix gn: <http://geonames.org/> .
+@prefix wd: <http://worldbank.org/> .
+@prefix fifa: <https://www.fifaindex.com/player/> .
+@base <http://geonames.org/> .
+
+
+#---------------- players -------------------------------------
+<TripleMapPlayers2017>
+a rr:TriplesMap;
+
+# file source
+rml:logicalSource [
+    rml:source "/Users/jiayun/PycharmProjects/untitled/untitled/untitled/Github Project/GM_personal_project/data_player/data_2019.csv";
+    rml:referenceFormulation ql:CSV
+];
+
+# define subject
+rr:subjectMap [rr:template"https://www.fifaindex.com/player/{ID}";
+    rr:class fifa:Player]
+
+# map the player's country
+rr:predicateObjectMap [
+    rr:predicate fifa:nationality;
+    rr:objectMap [ rml:reference "Nationality"]
+];
+
+# map the player's ID
+rr:predicateObjectMap [
+    rr:predicate fifa:id;
+    rr:objectMap [ rml:reference "ID"; rr:datatype xsd:double]
+];
+# map the player's club
+rr:predicateObjectMap [
+    rr:predicate fifa:club;
+    rr:objectMap [rml:reference "Club"]
+];
+
+#map the player's rating
+rr:predicateObjectMap [
+    rr:predicate fifa:rating;
+    rr:objectMap [rml:reference "Overall"; rr:datatype xsd:integer]
+];
+
+#map player's age
+rr:predicateObjectMap [
+    rr:predicate fifa:age;
+    rr:objectMap [rml:reference "Age"; rr:datatype xsd:integer]
+];
+
+.
