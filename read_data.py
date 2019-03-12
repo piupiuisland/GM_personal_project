@@ -25,10 +25,10 @@ def save_data(data,file_name):
     return
 
 file_1 = '2017_fulldata.csv'
-data_2017 = read_data(file_1,152)
+data_2017 = read_data(file_1,401)
 print(data_2017[0])
 print(data_2017[1])
-print(data_2017[151])
+print(data_2017[400])
 print(len(data_2017[0]))
 print(len(data_2017[1]))
 print(len(data_2017[2]))
@@ -40,7 +40,7 @@ print(len(data_2017))
 import pandas as pd
 
 all2018_data = pd.read_csv('data_player/2018_fulldata.csv')
-data_2018 = all2018_data.iloc[0:151,:]
+data_2018 = all2018_data.iloc[0:451,:]
 print(data_2018)
 data_2018.to_csv('data_player/data_2018.csv',index=False)      # index = false 是表示不保存index的意思
 
@@ -55,5 +55,5 @@ def use_pandas_readdata(filename,lines,savename):
     needed_data.to_csv(savepath,index=False)
     return
 
-use_pandas_readdata('2019_fulldata',151,'data_2019')
-use_pandas_readdata('2017_fulldata',151,'data_2017')
+use_pandas_readdata('2019_fulldata',451,'data_2019')
+use_pandas_readdata('2017_fulldata',451,'data_2017')
