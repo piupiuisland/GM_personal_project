@@ -34,26 +34,38 @@ print(len(data_2017[1]))
 print(len(data_2017[2]))
 print(len(data_2017))
 # save_data(data_2017,'data_2017')
+file_2 = '2019_fulldata.csv'
+data_2019 = read_data(file_2,21)
+print(data_2019[0])
+print(len(data_2019[0]))
 
 ###-------------- second part: use pandas load and save data -----------------------------
 
 import pandas as pd
 
-all2018_data = pd.read_csv('data_player/2018_fulldata.csv')
-data_2018 = all2018_data.iloc[0:451,:]
-print(data_2018)
-data_2018.to_csv('data_player/data_2018.csv',index=False)      # index = false 是表示不保存index的意思
+# all2018_data = pd.read_csv('data_player/2018_fulldata.csv')
+# data_2018 = all2018_data.iloc[0:451,:]
+# print(data_2018)
+# data_2018.to_csv('data_player/data_2018.csv',index=False)      # index = false 是表示不保存index的意思
+#
+# import pandas as pd
+#
+# def use_pandas_readdata(filename,lines,savename):
+#     path = 'data_player/'
+#     filepath = path + filename +'.csv'
+#     all_data = pd.read_csv(filepath)
+#     needed_data = all_data.iloc[0:lines,:]
+#     savepath = path + savename + '.csv'
+#     needed_data.to_csv(savepath,index=False)
+#     return
+#
+# use_pandas_readdata('2019_fulldata',451,'data_2019')
+# use_pandas_readdata('2017_fulldata',451,'data_2017')
 
-import pandas as pd
-
-def use_pandas_readdata(filename,lines,savename):
-    path = 'data_player/'
-    filepath = path + filename +'.csv'
-    all_data = pd.read_csv(filepath)
-    needed_data = all_data.iloc[0:lines,:]
-    savepath = path + savename + '.csv'
-    needed_data.to_csv(savepath,index=False)
-    return
-
-use_pandas_readdata('2019_fulldata',451,'data_2019')
-use_pandas_readdata('2017_fulldata',451,'data_2017')
+data_2019 = pd.read_csv('data_player/data_2019.csv')
+# print(data_2019.head(20))
+# print(data_2019['Club Logo'])
+data_2019.rename(columns={'Club Logo':'Club_Logo'},inplace = True)
+print(data_2019['Club_Logo'])
+# data_2019.to_csv('data_player/data_2019.csv',index=False)
+print(data_2019['RCM'])
