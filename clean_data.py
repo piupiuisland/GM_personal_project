@@ -40,8 +40,8 @@ print(len(data_2017))
 '''
 
 file_2 = '2019_fulldata.csv'
-data_2019 = read_data(file_2,21)        # 读一下这个文件，读到21行
-print(data_2019[0])                     # 把第一行打印一下，因为第一行是colunmn names
+data_2019 = read_data(file_2,21)
+print(data_2019[0])
 print(len(data_2019[0]))
 
 file_1 = '2017_fulldata.csv'
@@ -161,7 +161,7 @@ def clean_columns(filename,name_list):
 clean_columns('data_2019',column_list)
 
 data_20199 = pd.read_csv(path + 'data_2019' + '.csv')
-print(data_20199[['LS','ST','RS','LW','LF']])           # 同时把这些column 的数据打印出来
+print(data_20199[['LS','ST','RS','LW','LF']])
 # print(data_20199['LS'])
 # print(type(data_20199))
 
