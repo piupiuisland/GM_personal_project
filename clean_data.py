@@ -75,7 +75,7 @@ def clean_columns(filename,name_list):
         item_list = item_candi.tolist()              # convert to list
         item_replace = list(map(covert_v,item_list))
         data[item] = pd.Series(item_replace)
-    data.to_csv(path + filename + '.csv')
+    data.to_csv(path + filename + '.csv', index=False)
     return
 
 
@@ -96,3 +96,4 @@ clean_columns('data_2019', needs_cols_list)
 cleaning_data_2019 = pd.read_csv(path + 'data_2019' + '.csv')
 print(cleaning_data_2019[['LS', 'ST', 'RS', 'LW', 'LF']])
 print(cleaning_data_2019.head(20))
+print(list(cleaning_data_2019.columns))

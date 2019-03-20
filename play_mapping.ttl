@@ -9,51 +9,269 @@
 @prefix ql: <http://semweb.mmlab.be/ns/ql#> .
 @prefix gn: <http://geonames.org/> .
 @prefix wd: <http://worldbank.org/> .
-@prefix fifa: <https://www.fifaindex.com/player/> .
+@prefix fifa: <https://www.fifaindex.com/> .
+@prefix fifap: <https://www.fifaindex.com/player/> .
 @base <http://geonames.org/> .
 
 
 #---------------- players -------------------------------------
-<TripleMapPlayers2017>
-a rr:TriplesMap;
+<TripleMapPlayers2019>
+  a rr:TriplesMap;
 
-# file source
-rml:logicalSource [
+  # file source
+  rml:logicalSource [
     rml:source "/Users/jiayun/PycharmProjects/untitled/untitled/untitled/Github Project/GM_personal_project/data_player/data_2019.csv";
     rml:referenceFormulation ql:CSV
-];
+  ];
 
-# define subject
-rr:subjectMap [rr:template"https://www.fifaindex.com/player/{ID}";
-    rr:class fifa:Player]
+ # define subject
+  rr:subjectMap [rr:template"https://www.fifaindex.com/player/{ID}";
+    rr:class fifa:Player];
 
-# map the player's country
-rr:predicateObjectMap [
-    rr:predicate fifa:nationality;
-    rr:objectMap [ rml:reference "Nationality"]
-];
+ # map the player's name
 
-# map the player's ID
-rr:predicateObjectMap [
-    rr:predicate fifa:id;
-    rr:objectMap [ rml:reference "ID"; rr:datatype xsd:double]
-];
-# map the player's club
-rr:predicateObjectMap [
-    rr:predicate fifa:club;
-    rr:objectMap [rml:reference "Club"]
-];
+ rr:predicateObjectMap [
+    rr:predicate fifap:name;
+    rr:objectMap [ rml:reference "Name"]
+ ];
 
-#map the player's rating
-rr:predicateObjectMap [
-    rr:predicate fifa:rating;
-    rr:objectMap [rml:reference "Overall"; rr:datatype xsd:integer]
-];
+ # map the player's country
+ rr:predicateObjectMap [
+     rr:predicate fifap:nationality;
+     rr:objectMap [ rml:reference "Nationality"]
+ ];
 
-#map player's age
-rr:predicateObjectMap [
-    rr:predicate fifa:age;
-    rr:objectMap [rml:reference "Age"; rr:datatype xsd:integer]
-];
+ # map the player's ID
+ rr:predicateObjectMap [
+     rr:predicate fifap:id;
+     rr:objectMap [ rml:reference "ID"; rr:datatype xsd:double]
+ ];
+ # map the player's club
+ rr:predicateObjectMap [
+     rr:predicate fifap:club;
+     rr:objectMap [rml:reference "Club"]
+ ];
+
+ #map the player's rating
+ rr:predicateObjectMap [
+     rr:predicate fifap:rating;
+     rr:objectMap [rml:reference "Overall"; rr:datatype xsd:integer]
+ ];
+
+ #map player's age
+ rr:predicateObjectMap [
+     rr:predicate fifap:age;
+     rr:objectMap [rml:reference "Age"; rr:datatype xsd:integer]
+ ];
+
+ #map player's potential
+ rr:predicateObjectMap [
+     rr:predicate fifap:potential;
+     rr:objectMap [rml:reference "Potential"; rr:datatype xsd:integer]
+ ];
+
+ #map player's value
+ rr:predicateObjectMap [
+     rr:predicate fifap:value;
+     rr:objectMap [rml:reference "Value"; rr:datatype xsd:double]
+ ];
+
+ #map player's wage
+ rr:predicateObjectMap [
+     rr:predicate fifap:wage;
+     rr:objectMap [rml:reference "Wage"; rr:datatype xsd:double]
+ ];
+
+#map player's photo
+ rr:predicateObjectMap [
+     rr:predicate fifap:photo;
+     rr:objectMap [rr:template"{Photo}"]
+ ];
+
+
+ #map player's LS
+ rr:predicateObjectMap [
+     rr:predicate fifap:LS;
+     rr:objectMap [rml:reference "LS"; rr:datatype xsd:integer]
+ ];
+
+ #map player's ST
+ rr:predicateObjectMap [
+     rr:predicate fifap:ST;
+     rr:objectMap [rml:reference "ST"; rr:datatype xsd:interger]
+ ];
+
+ #map player's RS
+ rr:predicateObjectMap [
+     rr:predicate fifap:RS;
+     rr:objectMap [rml:reference "RS"; rr:datatype xsd:interger]
+ ];
+
+ #map player's LW
+ rr:predicateObjectMap [
+     rr:predicate fifap:LW;
+     rr:objectMap [rml:reference "LW"; rr:datatype xsd:interger]
+ ];
+
+ #map player's LF
+ rr:predicateObjectMap [
+     rr:predicate fifap:LF;
+     rr:objectMap [rml:reference "LF"; rr:datatype xsd:interger]
+ ];
+
+ #map player's CF
+ rr:predicateObjectMap [
+     rr:predicate fifap:CF;
+     rr:objectMap [rml:reference "CF"; rr:datatype xsd:interger]
+ ];
+
+ #map player's RF
+ rr:predicateObjectMap [
+     rr:predicate fifap:RF;
+     rr:objectMap [rml:reference "RF"; rr:datatype xsd:interger]
+ ];
+
+ #map player's RW
+ rr:predicateObjectMap [
+     rr:predicate fifap:RW;
+     rr:objectMap [rml:reference "RW"; rr:datatype xsd:interger]
+ ];
+
+ #map player's LAM
+ rr:predicateObjectMap [
+     rr:predicate fifap:LAM;
+     rr:objectMap [rml:reference "LAM"; rr:datatype xsd:interger]
+ ];
+
+ #map player's CAM
+ rr:predicateObjectMap [
+     rr:predicate fifap:CAM;
+     rr:objectMap [rml:reference "CAM"; rr:datatype xsd:interger]
+ ];
+
+ #map player's RAM
+ rr:predicateObjectMap [
+     rr:predicate fifap:RAM;
+     rr:objectMap [rml:reference "RAM"; rr:datatype xsd:interger]
+ ];
+
+ #map player's LM
+ rr:predicateObjectMap [
+     rr:predicate fifap:LM;
+     rr:objectMap [rml:reference "LM"; rr:datatype xsd:interger]
+ ];
+
+ #map player's LCM
+ rr:predicateObjectMap [
+     rr:predicate fifap:LCM;
+     rr:objectMap [rml:reference "LCM"; rr:datatype xsd:interger]
+ ];
+
+ #map player's CM
+ rr:predicateObjectMap [
+     rr:predicate fifap:CM;
+     rr:objectMap [rml:reference "CM"; rr:datatype xsd:interger]
+ ];
+
+ #map player's RCM
+ rr:predicateObjectMap [
+     rr:predicate fifap:RCM;
+     rr:objectMap [rml:reference "RCM"; rr:datatype xsd:interger]
+ ];
+
+ #map player's RM
+ rr:predicateObjectMap [
+     rr:predicate fifap:RM;
+     rr:objectMap [rml:reference "RM"; rr:datatype xsd:interger]
+ ];
+
+ #map player's LWB
+ rr:predicateObjectMap [
+     rr:predicate fifap:LWB;
+     rr:objectMap [rml:reference "LWB"; rr:datatype xsd:interger]
+ ];
+
+ #map player's LDM
+ rr:predicateObjectMap [
+     rr:predicate fifap:LDM;
+     rr:objectMap [rml:reference "LDM"; rr:datatype xsd:interger]
+ ];
+
+ #map player's CDM
+ rr:predicateObjectMap [
+     rr:predicate fifap:CDM;
+     rr:objectMap [rml:reference "CDM"; rr:datatype xsd:interger]
+ ];
+
+  #map player's RDM
+ rr:predicateObjectMap [
+     rr:predicate fifap:RDM;
+     rr:objectMap [rml:reference "RDM"; rr:datatype xsd:interger]
+ ];
+
+ #map player's RWB
+ rr:predicateObjectMap [
+     rr:predicate fifap:RWB;
+     rr:objectMap [rml:reference "RWB"; rr:datatype xsd:interger]
+ ];
+
+ #map player's LB
+ rr:predicateObjectMap [
+     rr:predicate fifap:LB;
+     rr:objectMap [rml:reference "LB"; rr:datatype xsd:interger]
+ ];
+
+ #map player's LCB
+ rr:predicateObjectMap [
+     rr:predicate fifap:LCB;
+     rr:objectMap [rml:reference "LCB"; rr:datatype xsd:interger]
+ ];
+
+ #map player's CB
+ rr:predicateObjectMap [
+     rr:predicate fifap:CB;
+     rr:objectMap [rml:reference "CB"; rr:datatype xsd:interger]
+ ];
+
+ #map player's RCB
+ rr:predicateObjectMap [
+     rr:predicate fifap:RCB;
+     rr:objectMap [rml:reference "RCB"; rr:datatype xsd:interger]
+ ];
+
+ #map player's RB
+ rr:predicateObjectMap [
+     rr:predicate fifap:RB;
+     rr:objectMap [rml:reference "RB"; rr:datatype xsd:interger]
+ ]
+
+ .
+
+#---------------------- clubs -------------------------------------
+<TripleMapClubs2019>
+  a rr:TriplesMap;
+
+  # file source
+  rml:logicalSource [
+    rml:source "/Users/jiayun/PycharmProjects/untitled/untitled/untitled/Github Project/GM_personal_project/data_player/data_2019.csv";
+    rml:referenceFormulation ql:CSV
+  ];
+
+ # define subject:club
+  rr:subjectMap [rr:template"https://www.fifaindex.com/team/{Club}";
+    rr:class fifa:club];
+
+# map the club country
+  rr:predicateObjectMap [
+     rr:predicate fifa:clublogo;
+     rr:objectMap [rr:template"{Club_Logo}"]
+  ];
+
+# map the club name
+  rr:predicateObjectMap [
+     rr:predicate fifa:club_name;
+     rr:objectMap [rml:reference "Club"]
+  ]
+
 
 .
