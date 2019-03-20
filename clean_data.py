@@ -3,8 +3,8 @@ import numpy as np
 import string
 
 ###-------------- first part: use csv load and save data -----------------------------
-# read data
-def read_data(file_name,lines):
+# read data  读文件读到 needed_lines这行
+def read_data(file_name, needed_lines):
     file_path = 'data_player/'
     file = file_path + file_name
     needed_data = []
@@ -13,7 +13,7 @@ def read_data(file_name,lines):
         # for row in r:
         for row in r:
             needed_data.append(row)
-            if len(needed_data) == lines:      # 一旦行数到了lines这个行数，就停止了，不接着写入了
+            if len(needed_data) == needed_lines:  # 一旦行数到了lines这个行数，就停止了，不接着写入了
                 break
     return needed_data
 
@@ -39,7 +39,7 @@ print(len(data_2017))
 # save_data(data_2017,'data_2017')       # 保存文件
 '''
 
-file_2 = '2019_fulldata.csv'
+file_2 = '2019_fulldata.csv'  # initial dataset
 data_2019 = read_data(file_2,21)
 print(data_2019[0])
 print(len(data_2019[0]))
@@ -77,9 +77,10 @@ use_pandas_readdata('2017_fulldata',451,'data_2017')
 
 data_2019 = pd.read_csv('data_player/data_2019.csv')
 print(data_2019.columns.tolist())
+
 # print(data_2019.head(20))
 # print(data_2019['Club Logo'])
-"""
+
 ### 这一行这个 club logo 名字不可用，需要加一个下划线，不然rdf 没法识别
 data_2019.rename(columns={'Club Logo':'Club_Logo'},inplace = True)
 
@@ -122,7 +123,7 @@ data_2019.rename(columns={'Club Logo':'Club_Logo'},inplace = True)
 
 
 #######   下面这一段代码是清洗列数据
-'''
+
 dd = data_2019['LWB'].fillna(0)      # 除掉这个'LWB' columan 中的nan，用0代替
 print(dd)
 
@@ -131,9 +132,8 @@ def covert_v(item):                     # 对于输入的item 转换成数字
     x = str(item)
     return eval(x)
 ll = list(map(covert_v,dd_list))       # 把convert function 和
-
-# data_2019['LWB'] = pd.Series(ll)
-# data_2019.to_csv('data_player/data_2019_cleaning.csv',index=True)
+data_2019['LWB'] = pd.Series(ll)
+data_2019.to_csv('data_player/data_2019_cleaning.csv', index=True)
 clean_data = pd.read_csv('data_player/data_2019_cleaning.csv')
 print(clean_data['LWB'])
 '''
@@ -152,17 +152,22 @@ def clean_columns(filename,name_list):
     data = pd.read_csv(path + filename + '.csv')
     for item in name_list:
         item_candi = data[item].fillna(0)            # deal with nan, convert nan to 0
-        item_list = item_candi.tolist()
+        item_list = item_candi.tolist()              # convert to list
         item_replace = list(map(covert_v,item_list))
         data[item] = pd.Series(item_replace)
     data.to_csv(path + filename + '.csv')
     return
 
+'''
 clean_columns('data_2019',column_list)
-
 data_20199 = pd.read_csv(path + 'data_2019' + '.csv')
 print(data_20199[['LS','ST','RS','LW','LF']])
 # print(data_20199['LS'])
 # print(type(data_20199))
 
-"""
+
+cols_list = data_2019.columns.tolist()  # column names list
+needs_cols_list = cols_list[28:-1]
+clean_columns('data_2019', needs_cols_list)
+check_data_2019 = pd.read_csv(path + 'data_2019' + '.csv')
+print(check_data_2019[['LS', 'ST', 'RS', 'LW', 'LF']])

@@ -166,3 +166,6 @@ print(data_20199[['LS','ST','RS','LW','LF']])           # 同时把这些column 
 # print(type(data_20199))
 
 """
+
+data_20199 = pd.read_csv('data_2019_cleaning.csv')
+print(data_20199[['LS', 'ST', 'RS', 'LW', 'LF']])
