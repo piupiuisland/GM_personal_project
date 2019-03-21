@@ -2,6 +2,7 @@ import csv
 import numpy as np
 import string
 import pandas as pd
+import math
 
 # all_2019data = pd.read_csv('data_player/2018_fulldata.csv')
 # data_2018 = all2018_data.iloc[0:451,:]                   # 读到第451行，下面隔一行保存
@@ -67,7 +68,8 @@ print(clean_data['LWB'])
 path = 'data_player/'
 def covert_v(item):                     # 对于输入的item 转换成数字
     x = str(item)
-    return eval(x)
+    re = int(eval(x))
+    return re
 
 def clean_columns(filename,name_list):
     data = pd.read_csv(path + filename + '.csv')
