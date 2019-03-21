@@ -34,6 +34,7 @@ print(data_2019.columns.tolist())  # 查看column 的名字，放一个列表里
 # 查看这个叫 'Club logo'的这列
 ### 这一行这个 club logo 名字不可用，需要加一个下划线，不然rdf 没法识别
 data_2019.rename(columns={'Club Logo':'Club_Logo'},inplace = True)
+data_2019.rename(columns={'Release Clause': 'Release_Clause'}, inplace=True)
 data_2019.to_csv('data_player/data_2019.csv', index=False)
 
 ##############################################################################
