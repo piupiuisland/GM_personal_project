@@ -66,6 +66,7 @@ print(clean_data['LWB'])
 
 
 path = 'data_player/'
+path = '/Users/jiayun/PycharmProjects/untitled/untitled/untitled/Github Project/GM_personal_project/data_player/'
 def covert_v(item):                     # 对于输入的item 转换成数字
     x = str(item)
     re = int(eval(x))
