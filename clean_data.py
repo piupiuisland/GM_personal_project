@@ -27,7 +27,8 @@ def use_pandas_readdata(filename,num_ofLines,savename):
     needed_data.to_csv(savepath,index=False)
     return
 
-use_pandas_readdata('2019_fulldata',451,'data_2019')
+
+use_pandas_readdata('2019_fulldata', 450, 'data_2019')
 
 data_2019 = pd.read_csv('data_player/data_2019.csv')
 print(data_2019.columns.tolist())  # 查看column 的名字，放一个列表里
