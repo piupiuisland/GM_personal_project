@@ -62,3 +62,6 @@ data.rename(columns={'Release_Clause': 'p_wage'}, inplace=True)
 data['p_wage'] = pd.Series(hypo_a_data)
 data.iloc[:, 54:89].to_csv('extracted_data.csv', index=False)
 print(data)
+
+data = pd.read_csv('extracted_data.csv')
+list(data.columns)
