@@ -39,7 +39,7 @@ data_2019.rename(columns={'Club Logo':'Club_Logo'},inplace = True)
 data_2019.rename(columns={'Release Clause': 'Release_Clause'}, inplace=True)
 data_2019.to_csv('data_player/data_2019.csv', index=False)
 
-##############################################################################
+#############################################################################
 #############################################################################
 
 
