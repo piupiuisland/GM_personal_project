@@ -36,9 +36,15 @@ a_data = np.array(extract_data2)
 # print(a_data)
 
 ##---------------------- convert wage to number ---------------------
+
+data_path = 'data_player/'
+file_name = 'data_2019'
+data = pd.read_csv(data_path + file_name + '.csv')
+
+extract_data2 = data.iloc[0:451, 54:88]
+a_data = np.array(extract_data2)
 hypo_a_data = data['Wage']
 target_list = data['Wage'].tolist()
-
 
 def replace_money_symbol(item):
     item = item.replace('€', '')
@@ -47,6 +53,7 @@ def replace_money_symbol(item):
     return re
 
 
+print(data['Wage'])
 hypo_a_data = list(map(replace_money_symbol, hypo_a_data))
 ##---------------------- convert wage to number end ---------------------
 
@@ -55,7 +62,6 @@ nd_hypo_a_data = np.array(hypo_a_data).reshape(450, 1)
 # print(nd_hypo_a_data.shape)
 final_data = np.concatenate((a_data, nd_hypo_a_data), axis=1)
 ### here fina_data is the data for analysing
-
 
 ### extract needed data, save to csv file
 data.rename(columns={'Release_Clause': 'p_wage'}, inplace=True)
@@ -66,3 +72,4 @@ data.iloc[:, 54:89].to_csv('extracted_data.csv', index=False)
 data = pd.read_csv('extracted_data.csv')
 print(list(data.columns))
 print(data.shape)
+print(data['p_wage'])
